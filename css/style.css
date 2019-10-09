@@ -19,10 +19,73 @@ a {
   color: var(--foreground);
 }
 
+.navarea {
+  display: grid;
+  grid-template-columns: 3em auto 3em;
+  grid-template-areas: 
+    "hamb logo cart"
+    "srch srch srch"
+    "menu menu menu";
+}
 
+.mainmenu a {
+  color: var(--background);
+  text-decoration: none;
+  line-height: 3;
+  display: block;
+  text-align: center;
+}
+.mainmenu a:hover {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+.hamburger {
+  background-color: transparent;
+  color: var(--background);
+  grid-area: hamb;
+  border: none;
+}
+.addtocart {
+  background-color: transparent;
+  grid-area: cart;
+  border: none;
+}
+.apple {
+  text-align: center;
+  grid-area: logo;
+}
+.mainmenu {
+  grid-area: menu;
+  display: none;
+}
+.search {
+  grid-area: srch;
+  background-color: #666;
+  border: none;
+  padding: 0.5em;
+  margin: 0 1em;
+  border-radius: 0.5em;
+  color: white;
+  background-image: url(/img/search.svg);
+  background-repeat: no-repeat;
+  background-position: 0.5em -0.25em; 
+  padding-left: 2em;
+  display: none;
+}
+.search::placeholder {
+  color: #aaa;
+}
 
+.navarea:hover .mainmenu {
+  display: block;
+}
+.navarea:hover .search {
+  display: block;
+}
 
-
+/* .hamburger:hover + .search {
+  display: block;
+} */
 
 .header {
   background-color: var(--midground);
@@ -91,6 +154,23 @@ a {
 /* MEDIA QUERIES MUST GO AT THE BOTTOM */
 
 @media screen and (min-width: 900px) {
+
+  .navarea {
+    grid-template-columns: 3em auto 3em 3em;
+    grid-template-areas: "logo menu srch cart";
+  }
+  .mainmenu {
+    text-align: right;
+  }
+  .mainmenu li {
+    display: inline-block;
+  }
+  .mainmenu a {
+    padding: 0 1em;
+  }
+  .hamburger {
+    display: none;
+  }
 
   .all-products {
     display: grid;
